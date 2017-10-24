@@ -25,7 +25,7 @@ SECRET_KEY = 'b!v%xfq@4a)&fq(_e@8vm+sieos^tpt&3rqjk73^1a+19ptn3&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'thesalute.pythonanywhere.com']
 
 
 # Application definition
