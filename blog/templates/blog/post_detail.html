@@ -1,11 +1,14 @@
 {% extends 'blog/base.html' %}
+{% load humanize %}
 
 {% block content %}
   <div class="post">
+    <h1>{{ post.title }}</h1>
+      <p>{{ post.text|linebreaksbr }}</p>
     {% if post.published_date %}
-      <div class="date">
+      <div class="date"><i>
         {{ post.published_date }}
-      </div>
+      </i></div>
     {% else %}
         <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
     {% endif %}
@@ -13,16 +16,15 @@
     <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
     <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
     {% endif %}
-    <h1>{{ post.title }}</div>
-      <p>{{ post.text|linebreaksbr }}</p>
+
   </div>
 
   <hr>
   <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add Comment</a>
   {% for comment in post.comments.all %}
     <div class="comment">
-      <div class="date">{{ comment.created_date }}</div>
       <strong>{{ comment.author }}</strong>
+      <div class="date">{{ comment.created_date|naturaltime }}</div>
       <p>{{ comment.text|linebreaks }}</p>
     </div>
   {% empty %}
